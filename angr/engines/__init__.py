@@ -9,6 +9,7 @@ from .syscall import SimEngineSyscall
 from .concrete import SimEngineConcrete
 from .hook import SimEngineHook
 from .soot import SimEngineSoot
+from .ail import SimEngineAIL
 
 from .hub import EngineHub, EnginePreset
 
@@ -42,3 +43,9 @@ soot_preset.add_default_plugin('soot', SimEngineSoot)
 soot_preset.add_default_plugin('vex', SimEngineVEX)
 soot_preset.default_engine = 'soot'
 soot_preset.order = ['soot', 'vex']
+
+# AIL engine preset
+ail_preset = basic_preset.copy()
+EngineHub.register_preset('ail', ail_preset)
+ail_preset.add_default_plugin('ail', SimEngineAIL)
+ail_preset.default_engine = 'ail'
